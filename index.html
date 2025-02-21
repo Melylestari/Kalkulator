@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>KALKULATOR SEDERHANA</title>
+    <style>
+ body {
+    display: flex;  /* Menggunakan Flexbox untuk menyusun elemen */
+    justify-content: center;  /* Memusatkan elemen secara horizontal */
+    align-items: center;  /* Memusatkan elemen secara vertikal */
+    height: 100vh;  /* Tinggi layar penuh */
+    margin: 0;  /* Menghapus margin default */
+    background: #f4f4f4;  /* Memberikan warna latar belakang abu-abu terang */
+    font-family: Arial, sans-serif;  /* Menggunakan font Arial */
+}
+
+.container {
+    display: grid;  /* Menggunakan grid untuk menata tombol */
+    grid-template-columns: repeat(4, 80px);  /* Membuat 4 kolom dengan lebar 80px */
+    gap: 10px;  /* Memberikan jarak antar tombol */
+    background: #333;  /* Warna latar belakang kontainer gelap */
+    padding: 20px;  /* Menambah padding sekitar kontainer */
+    border-radius: 10px;  /* Memberikan sudut membulat */
+}
+
+input {
+    grid-column: span 4;  /* Input span 4 kolom (membentang penuh) */
+    height: 70px;  /* Tinggi input 70px */
+    font-size: 24px;  /* Ukuran font 24px */
+    text-align: right;  /* Menyusun teks ke kanan */
+    border: 2px solid #ccc;  /* Menambahkan border abu-abu terang */
+    padding: 10px;  /* Padding di dalam input */
+    border-radius: 5px;  /* Sudut membulat pada input */
+    background: #fff;  /* Warna latar belakang putih */
+}
+
+button {
+    width: 80px;  /* Lebar tombol 80px */
+    height: 80px;  /* Tinggi tombol 80px */
+    font-size: 24px;  /* Ukuran font tombol */
+    cursor: pointer;  /* Mengubah pointer saat mouse di atas tombol */
+    border-radius: 5px;  /* Sudut membulat pada tombol */
+    background: #f0f0f0;  /* Warna latar belakang tombol abu-abu terang */
+    border: none;  /* Menghapus border tombol */
+    transition: background 0.2s;  /* Efek transisi untuk perubahan latar belakang */
+}
+
+button:hover {
+    background: #ddd;  /* Mengubah latar belakang saat hover (disentuh) */
+}
+
+button:active {
+    background: #bbb;  /* Mengubah latar belakang saat tombol ditekan */
+}
+
+.operator {
+    background: #ff8c00;  /* Latar belakang tombol operator (oranye) */
+    color: white;  /* Teks berwarna putih */
+}
+
+.operator:hover {
+    background: #ff5b00;  /* Latar belakang tombol operator berubah saat hover (oranye lebih gelap) */
+}
+
+/* Membuat tombol = dan 0 lebih besar */
+.button-large {
+    grid-column: span 2;  /* Membuat tombol 0 dan = memanjang ke dua kolom */
+    width: 260px;  /* Lebar tombol = dan 0 lebih besar */
+}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input name="inputan" id="inputan" type="text"> 
+        <button class="operator" onclick="hapussemua('')">AC</button>
+        <button class="operator" onclick="delate('')">DEL</button>
+        <button class="operator" onclick="nilai(',')">,</button>
+        <button class="operator" onclick="nilai(':')">:</button>
+        <button class="number" onclick="nilai('7')">7</button>
+        <button class="number" onclick="nilai('8')">8</button>
+        <button class="number" onclick="nilai('9')">9</button>
+        <button class="operator" onclick="nilai('-')">-</button>
+        <button class="number" onclick="nilai('4')">4</button>
+        <button class="number" onclick="nilai('5')">5</button>
+        <button class="number" onclick="nilai('6')">6</button>
+        <button class="operator" onclick="nilai('*')">x</button>
+        <button class="number" onclick="nilai('3')">3</button>
+        <button class="number" onclick="nilai('2')">2</button>
+        <button class="number" onclick="nilai('1')">1</button>
+        <button class="operator" onclick="nilai('+')">+</button>
+        <button class="number" onclick="nilai('0')">0</button>
+        <button class="operator button-large" onclick="hasil('')">=</button>
+
+<script>
+   function hapussemua() {
+    document.getElementById('inputan').value = '';
+   }
+   function nilai(value){
+    document.getElementById('inputan').value += value;
+   }
+   function delate() {
+    const display = document.getElementById('inputan');
+    display.value = display.value.slice(0,-1);
+   }
+   function hasil() {
+    let display = document.getElementById('inputan');
+    try{
+        display.value = eval(display.value);
+    }catch{
+        display.value = 'ERROR';
+    }
+   }
+
+</script>
+</div>
+</body>
+</html>
